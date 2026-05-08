@@ -1,0 +1,18 @@
+services:
+  db:
+    build:
+      context: ./db
+    container_name: tienda-perritos-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: tienda_perritos
+      MYSQL_USER: alumno
+      MYSQL_PASSWORD: alumno123
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  db_data:
